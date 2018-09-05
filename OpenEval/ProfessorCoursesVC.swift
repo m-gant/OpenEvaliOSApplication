@@ -49,6 +49,12 @@ class ProfessorCoursesVC: UIViewController {
         
         self.present(alert, animated: true, completion: nil)
     }
+    
+    func presentVC(_ VC: UIViewController) {
+        present(VC, animated: true, completion: nil)
+    }
+    
+   
 }
 
 
@@ -62,6 +68,14 @@ extension ProfessorCoursesVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return courseNames.count
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let courseName = courseNames[indexPath.row]
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        if let courseDetail = storyBoard.instantiateViewController(withIdentifier: "courseDetail") as? CourseDetailVC {
+            courseDetail.presentSelf(sender: self, with: courseName)
+        }
     }
     
     

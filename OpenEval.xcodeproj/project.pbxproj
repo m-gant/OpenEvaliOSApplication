@@ -13,6 +13,7 @@
 		195CBCE8213DD09C002DC204 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 195CBCE7213DD09C002DC204 /* Assets.xcassets */; };
 		195CBCEB213DD09C002DC204 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 195CBCE9213DD09C002DC204 /* LaunchScreen.storyboard */; };
 		195CBCF3213DD0BC002DC204 /* ProfessorCoursesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195CBCF2213DD0BC002DC204 /* ProfessorCoursesVC.swift */; };
+		19D7FCD6213F6DAE009E0A35 /* CourseDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D7FCD5213F6DAE009E0A35 /* CourseDetailVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		195CBCEA213DD09C002DC204 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		195CBCEC213DD09C002DC204 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		195CBCF2213DD0BC002DC204 /* ProfessorCoursesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfessorCoursesVC.swift; sourceTree = "<group>"; };
+		19D7FCD5213F6DAE009E0A35 /* CourseDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDetailVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				195CBCE9213DD09C002DC204 /* LaunchScreen.storyboard */,
 				195CBCEC213DD09C002DC204 /* Info.plist */,
 				195CBCF2213DD0BC002DC204 /* ProfessorCoursesVC.swift */,
+				19D7FCD5213F6DAE009E0A35 /* CourseDetailVC.swift */,
 			);
 			path = OpenEval;
 			sourceTree = "<group>";
@@ -138,6 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19D7FCD6213F6DAE009E0A35 /* CourseDetailVC.swift in Sources */,
 				195CBCE3213DD09C002DC204 /* ViewController.swift in Sources */,
 				195CBCF3213DD0BC002DC204 /* ProfessorCoursesVC.swift in Sources */,
 				195CBCE1213DD09C002DC204 /* AppDelegate.swift in Sources */,
