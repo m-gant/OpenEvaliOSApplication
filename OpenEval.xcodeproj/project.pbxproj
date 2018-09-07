@@ -14,6 +14,9 @@
 		195CBCEB213DD09C002DC204 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 195CBCE9213DD09C002DC204 /* LaunchScreen.storyboard */; };
 		195CBCF3213DD0BC002DC204 /* ProfessorCoursesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195CBCF2213DD0BC002DC204 /* ProfessorCoursesVC.swift */; };
 		19D7FCD6213F6DAE009E0A35 /* CourseDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D7FCD5213F6DAE009E0A35 /* CourseDetailVC.swift */; };
+		19D7FCD8214226E1009E0A35 /* CourseSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D7FCD7214226E1009E0A35 /* CourseSearchVC.swift */; };
+		19D7FCDA2142335E009E0A35 /* DatabaseRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D7FCD92142335E009E0A35 /* DatabaseRequester.swift */; };
+		19D7FCDC21423398009E0A35 /* ResponseModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D7FCDB21423398009E0A35 /* ResponseModels.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,9 @@
 		195CBCEC213DD09C002DC204 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		195CBCF2213DD0BC002DC204 /* ProfessorCoursesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfessorCoursesVC.swift; sourceTree = "<group>"; };
 		19D7FCD5213F6DAE009E0A35 /* CourseDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDetailVC.swift; sourceTree = "<group>"; };
+		19D7FCD7214226E1009E0A35 /* CourseSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseSearchVC.swift; sourceTree = "<group>"; };
+		19D7FCD92142335E009E0A35 /* DatabaseRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseRequester.swift; sourceTree = "<group>"; };
+		19D7FCDB21423398009E0A35 /* ResponseModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseModels.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +72,9 @@
 				195CBCEC213DD09C002DC204 /* Info.plist */,
 				195CBCF2213DD0BC002DC204 /* ProfessorCoursesVC.swift */,
 				19D7FCD5213F6DAE009E0A35 /* CourseDetailVC.swift */,
+				19D7FCD7214226E1009E0A35 /* CourseSearchVC.swift */,
+				19D7FCD92142335E009E0A35 /* DatabaseRequester.swift */,
+				19D7FCDB21423398009E0A35 /* ResponseModels.swift */,
 			);
 			path = OpenEval;
 			sourceTree = "<group>";
@@ -143,8 +152,11 @@
 			files = (
 				19D7FCD6213F6DAE009E0A35 /* CourseDetailVC.swift in Sources */,
 				195CBCE3213DD09C002DC204 /* ViewController.swift in Sources */,
+				19D7FCD8214226E1009E0A35 /* CourseSearchVC.swift in Sources */,
+				19D7FCDA2142335E009E0A35 /* DatabaseRequester.swift in Sources */,
 				195CBCF3213DD0BC002DC204 /* ProfessorCoursesVC.swift in Sources */,
 				195CBCE1213DD09C002DC204 /* AppDelegate.swift in Sources */,
+				19D7FCDC21423398009E0A35 /* ResponseModels.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

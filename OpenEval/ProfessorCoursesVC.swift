@@ -29,25 +29,31 @@ class ProfessorCoursesVC: UIViewController {
     
     
     @IBAction func addCourseButtonPressed(_ sender: Any) {
-        let alert = UIAlertController(title: "Enter Course Number", message: nil, preferredStyle: .alert)
-        alert.addTextField { (textField) in
-            textField.placeholder = "LMC 1234, CS 4567, etc."
-        }
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-        let submitAction = UIAlertAction(title: "Submit", style: .default) { (action) in
-            let textField = alert.textFields![0]
-            if let text = textField.text {
-                self.courseNames.append(text)
+        if let courseSearchVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "courseSearch") as? CourseSearchVC {
+            self.addChildViewController(courseSearchVC)
+            self.view.addSubview(courseSearchVC.view)
+            courseSearchVC.view.translatesAutoresizingMaskIntoConstraints = false
+            self.view.addConstraints([
+                courseSearchVC.view.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 30),
+                courseSearchVC.view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+                courseSearchVC.view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+                courseSearchVC.view.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
+            ])
+            
+            courseSearchVC.assignClosures(onDismiss: {
+                courseSearchVC.view.removeFromSuperview()
+                courseSearchVC.removeFromParentViewController()
+            }) { (courseNumber) in
+                self.courseNames.append(courseNumber)
                 UserDefaults.standard.set(self.courseNames, forKey: "Burdell")
-                self.tableView.reloadData()
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
             }
+            
         }
         
-        alert.addAction(cancelAction)
-        alert.addAction(submitAction)
-        
-        self.present(alert, animated: true, completion: nil)
     }
     
     func presentVC(_ VC: UIViewController) {
