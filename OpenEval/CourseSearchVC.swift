@@ -41,7 +41,6 @@ class CourseSearchVC: UIViewController {
 extension CourseSearchVC: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print(searchText)
         DatabaseRequester.searchFor(courseNumber: searchText) { (courseResponses) in
             self.searchResults = courseResponses
             DispatchQueue.main.async {
@@ -60,7 +59,7 @@ extension CourseSearchVC: UISearchBarDelegate {
 extension CourseSearchVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var courseNameCell = UITableViewCell()
+        let courseNameCell = UITableViewCell()
         courseNameCell.textLabel?.text = searchResults[indexPath.row].courseNumber + ", " + searchResults[indexPath.row].courseName
         return courseNameCell
         
@@ -71,8 +70,19 @@ extension CourseSearchVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        onCellSelect(searchResults[indexPath.row].courseNumber)
-        onDismiss()
+        let selectedCourse = searchResults[indexPath.row]
+        let alert = UIAlertController(title: "Are you sure?", message: "You are registering for \(selectedCourse.courseNumber)" , preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+            self.onCellSelect(selectedCourse.courseNumber)
+            self.onDismiss()
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        alert.addAction(OKAction)
+        alert.addAction(cancelAction)
+        
+        self.present(alert, animated: true, completion: nil)
+        
     }
     
 }
