@@ -35,7 +35,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aV6-89-oIH">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <rect key="frame" x="0.0" y="116" width="375" height="502"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
@@ -57,6 +57,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="aV6-89-oIH" id="YxU-3z-K29"/>
+                        <segue destination="Bx6-CW-JKA" kind="show" identifier="toCourseDetail" id="iBu-Rp-wqj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FI3-KH-5Pc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -71,37 +72,39 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3b4-Ay-qli">
-                                <rect key="frame" x="16" y="20" width="343" height="45"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hTw-CW-Jg4">
+                                <rect key="frame" x="0.0" y="116" width="375" height="502"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1iT-SH-65O">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1000" id="Vb3-gy-V6J"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="4Kp-pA-yVK"/>
+                                    <constraint firstAttribute="bottom" secondItem="1iT-SH-65O" secondAttribute="bottom" id="0Wb-56-ugO"/>
+                                    <constraint firstItem="1iT-SH-65O" firstAttribute="top" secondItem="hTw-CW-Jg4" secondAttribute="top" id="ERS-gc-nA3"/>
+                                    <constraint firstItem="1iT-SH-65O" firstAttribute="leading" secondItem="hTw-CW-Jg4" secondAttribute="leading" id="hGl-nX-8Rt"/>
+                                    <constraint firstAttribute="trailing" secondItem="1iT-SH-65O" secondAttribute="trailing" id="yLG-Qp-xMo"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="AvenirNext-Heavy" family="Avenir Next" pointSize="30"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lxo-Cz-vpg">
-                                <rect key="frame" x="147.5" y="75" width="79" height="30"/>
-                                <state key="normal" title="Add Survey"/>
-                            </button>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="3b4-Ay-qli" firstAttribute="leading" secondItem="6xC-Oc-Y2i" secondAttribute="leading" constant="16" id="VEi-wd-q3b"/>
-                            <constraint firstItem="3b4-Ay-qli" firstAttribute="top" secondItem="6xC-Oc-Y2i" secondAttribute="top" id="ZWy-qV-AkD"/>
-                            <constraint firstItem="Lxo-Cz-vpg" firstAttribute="top" secondItem="3b4-Ay-qli" secondAttribute="bottom" constant="10" id="fRL-Og-o1J"/>
-                            <constraint firstItem="6xC-Oc-Y2i" firstAttribute="trailing" secondItem="3b4-Ay-qli" secondAttribute="trailing" constant="16" id="mou-ui-naE"/>
-                            <constraint firstItem="Lxo-Cz-vpg" firstAttribute="centerX" secondItem="3b4-Ay-qli" secondAttribute="centerX" id="yQ0-hi-Kc0"/>
+                            <constraint firstItem="hTw-CW-Jg4" firstAttribute="leading" secondItem="6xC-Oc-Y2i" secondAttribute="leading" id="5Rq-iE-TAk"/>
+                            <constraint firstItem="6xC-Oc-Y2i" firstAttribute="bottom" secondItem="hTw-CW-Jg4" secondAttribute="bottom" id="OO5-TA-d2e"/>
+                            <constraint firstItem="1iT-SH-65O" firstAttribute="width" secondItem="VD7-By-Qgq" secondAttribute="width" id="eBt-8R-fwa"/>
+                            <constraint firstItem="6xC-Oc-Y2i" firstAttribute="trailing" secondItem="hTw-CW-Jg4" secondAttribute="trailing" id="kmc-67-FG6"/>
+                            <constraint firstItem="hTw-CW-Jg4" firstAttribute="top" secondItem="6xC-Oc-Y2i" secondAttribute="top" id="lqW-7D-c9u"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6xC-Oc-Y2i"/>
                     </view>
-                    <connections>
-                        <outlet property="courseTitleLabel" destination="3b4-Ay-qli" id="MHD-Yk-jZR"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zbn-gE-2yd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2324" y="-186.65667166416793"/>
+            <point key="canvasLocation" x="2343" y="-186"/>
         </scene>
         <!--Course SearchVC-->
         <scene sceneID="9oe-R6-DfU">
@@ -165,8 +168,8 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eyP-a1-Iw8" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item 1" id="OOC-kx-5Rn"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iaM-Ke-9pU">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="iaM-Ke-9pU">
+                        <rect key="frame" x="0.0" y="20" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

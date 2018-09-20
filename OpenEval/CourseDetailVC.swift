@@ -10,21 +10,22 @@ import UIKit
 
 class CourseDetailVC: UIViewController {
 
-    @IBOutlet weak var courseTitleLabel: UILabel!
+
     var courseName: String!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        courseTitleLabel.text = courseName
+        self.navigationItem.title = courseName
+        
     }
     
-    func presentSelf(sender: UIViewController, with courseTitle: String) {
+    func configureSelf(sender: UIViewController, with courseTitle: String) {
         courseName = courseTitle
-        if let vc = sender as? ProfessorCoursesVC {
-            vc.presentVC(self)
-        }
+        sender.navigationController?.pushViewController(self, animated: true)
         
     }
 
 
 }
+
