@@ -17,3 +17,15 @@ struct CourseResponse: Codable {
 struct CourseResponseWrapper: Codable {
     var message: [CourseResponse]
 }
+struct SurveyResponseWrapper: Codable {
+    var message: [Survey]
+}
+
+struct Survey : Codable {
+    var _id: String
+    var startTime: Int
+    var endTime: Int
+    var name: String
+    
+    
+}

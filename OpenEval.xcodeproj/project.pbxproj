@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1940D5592159638E00AFDD38 /* DefaultSurveySettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1940D5582159638E00AFDD38 /* DefaultSurveySettingsVC.swift */; };
+		194DE1ED215EB65C00EB3031 /* BasicCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194DE1EC215EB65C00EB3031 /* BasicCollectionViewCell.swift */; };
 		195CBCE1213DD09C002DC204 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195CBCE0213DD09C002DC204 /* AppDelegate.swift */; };
 		195CBCE3213DD09C002DC204 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195CBCE2213DD09C002DC204 /* ViewController.swift */; };
 		195CBCE6213DD09C002DC204 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 195CBCE4213DD09C002DC204 /* Main.storyboard */; };
@@ -20,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1940D5582159638E00AFDD38 /* DefaultSurveySettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSurveySettingsVC.swift; sourceTree = "<group>"; };
+		194DE1EC215EB65C00EB3031 /* BasicCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicCollectionViewCell.swift; sourceTree = "<group>"; };
 		195CBCDD213DD09C002DC204 /* OpenEval.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenEval.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		195CBCE0213DD09C002DC204 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		195CBCE2213DD09C002DC204 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -75,6 +79,8 @@
 				19D7FCD7214226E1009E0A35 /* CourseSearchVC.swift */,
 				19D7FCD92142335E009E0A35 /* DatabaseRequester.swift */,
 				19D7FCDB21423398009E0A35 /* ResponseModels.swift */,
+				1940D5582159638E00AFDD38 /* DefaultSurveySettingsVC.swift */,
+				194DE1EC215EB65C00EB3031 /* BasicCollectionViewCell.swift */,
 			);
 			path = OpenEval;
 			sourceTree = "<group>";
@@ -154,7 +160,9 @@
 				195CBCE3213DD09C002DC204 /* ViewController.swift in Sources */,
 				19D7FCD8214226E1009E0A35 /* CourseSearchVC.swift in Sources */,
 				19D7FCDA2142335E009E0A35 /* DatabaseRequester.swift in Sources */,
+				194DE1ED215EB65C00EB3031 /* BasicCollectionViewCell.swift in Sources */,
 				195CBCF3213DD0BC002DC204 /* ProfessorCoursesVC.swift in Sources */,
+				1940D5592159638E00AFDD38 /* DefaultSurveySettingsVC.swift in Sources */,
 				195CBCE1213DD09C002DC204 /* AppDelegate.swift in Sources */,
 				19D7FCDC21423398009E0A35 /* ResponseModels.swift in Sources */,
 			);
