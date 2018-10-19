@@ -11,20 +11,32 @@ import UIKit
 class ProfessorCoursesVC: UIViewController {
     
     
-    var courseNames: [String] = []
+    var courses: [CourseResponse] = []
+    @IBOutlet weak var scrollContentView: UIView!
     
-    @IBOutlet weak var tableView: UITableView!
+    //CoursesView
+    @IBOutlet weak var coursesCollectionView: UICollectionView!
+    
+    @IBOutlet weak var coursesViewSeparatorView: UIView!
+    
+    let professorCoursesView = CollectionComponentView()
+    let blurg = ProfessorCoursesView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(type(of: blurg).description().components(separatedBy: ".").last!)
+        configureViews()
         
-        tableView.delegate = self
-        tableView.dataSource = self
-        
-        if let savedCourseNames = UserDefaults.standard.object(forKey: "Burdell") as? [String] {
-            courseNames = savedCourseNames
-            tableView.reloadData()
+        if let savedCoursesData = UserDefaults.standard.object(forKey: "Burdell") as? Data, let savedCourses = try? PropertyListDecoder().decode([CourseResponse].self, from: savedCoursesData) {
+            courses = savedCourses
+            coursesCollectionView.reloadData()
         }
+    }
+    
+    func configureViews() {
+        
+       configureCoursesView()
+        
     }
     
     
@@ -44,11 +56,12 @@ class ProfessorCoursesVC: UIViewController {
             courseSearchVC.assignClosures(onDismiss: {
                 courseSearchVC.view.removeFromSuperview()
                 courseSearchVC.removeFromParentViewController()
-            }) { (courseNumber) in
-                self.courseNames.append(courseNumber)
-                UserDefaults.standard.set(self.courseNames, forKey: "Burdell")
+            }) { (courseResponse) in
+                self.courses.append(courseResponse)
+                
+                UserDefaults.standard.set(try? PropertyListEncoder().encode(self.courses), forKey: "Burdell")
                 DispatchQueue.main.async {
-                    self.tableView.reloadData()
+                    self.coursesCollectionView.reloadData()
                 }
             }
             
@@ -61,28 +74,56 @@ class ProfessorCoursesVC: UIViewController {
 }
 
 
-extension ProfessorCoursesVC: UITableViewDelegate, UITableViewDataSource {
+
+//MARK: Courses View Handling
+extension ProfessorCoursesVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        cell.textLabel?.text = courseNames[indexPath.row]
+    func configureCoursesView() {
+        coursesCollectionView.delegate = self
+        coursesCollectionView.dataSource = self
+        coursesViewSeparatorView.layer.cornerRadius = coursesViewSeparatorView.frame.height / 2
+        coursesCollectionView.register(ProfessorCourseCollectionViewCell.self, forCellWithReuseIdentifier: "professorCoursesCell")
+        coursesCollectionView.backgroundColor = .clear
+        
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        coursesCollectionView.setCollectionViewLayout(layout, animated: false)
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return courses.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "professorCoursesCell", for: indexPath) as! ProfessorCourseCollectionViewCell
+        let course = courses[indexPath.item]
+        cell.layout(courseName: course.courseName, courseNumber: course.courseNumber)
         return cell
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return courseNames.count
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let courseName = courseNames[indexPath.row]
-        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        if let courseDetail = storyBoard.instantiateViewController(withIdentifier: "courseDetail") as? CourseDetailVC {
-            courseDetail.configureSelf(sender: self, with: courseName)
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: collectionView.frame.height / 2 - 10)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let selectedCourse = courses[indexPath.item]
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let courseDetailVC = storyboard.instantiateViewController(withIdentifier: "courseDetail") as? CourseDetailVC {
+            courseDetailVC.configureSelf(sender: self, with: selectedCourse)
         }
     }
     
     
-    
-    
-    
 }
+
+

@@ -28,4 +28,34 @@ struct Survey : Codable {
     var name: String
     
     
+    func availability() -> Bool {
+        
+        let startDate = Date(timeIntervalSince1970: Double(exactly: startTime)!)
+        let endDate = Date(timeIntervalSince1970: Double(exactly: endTime)!)
+        let currentDate = Date()
+        
+        return (currentDate >= startDate) && (currentDate <= endDate)
+        
+    }
+    
+    
+    func startDateString() -> String {
+        
+        let startDate = Date(timeIntervalSince1970: Double(exactly: startTime)!)
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM dd,yyyy"
+        
+        return formatter.string(from: startDate)
+    }
+    
+    func endDateString() -> String {
+        
+        let endDate = Date(timeIntervalSince1970: Double(exactly: endTime)!)
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM dd,yyyy"
+        
+        return formatter.string(from: endDate)
+    }
+    
+    
 }

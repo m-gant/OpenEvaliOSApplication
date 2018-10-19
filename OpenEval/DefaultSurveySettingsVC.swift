@@ -10,6 +10,10 @@ import UIKit
 
 class DefaultSurveySettingsVC: UIViewController {
     
+    @IBOutlet weak var surveyNameView: UIView!
+    @IBOutlet weak var surveyNameTextField: UITextField!
+    @IBOutlet weak var surveyNameSeparatorView: UIView!
+    
     @IBOutlet weak var startDatePicker: UIDatePicker!
     @IBOutlet weak var endDatePicker: UIDatePicker!
     @IBOutlet weak var deployDefaultSurveyButton: UIButton!
@@ -24,6 +28,8 @@ class DefaultSurveySettingsVC: UIViewController {
         startDatePicker.minimumDate = Date()
         endDatePicker.minimumDate = Date()
         self.navigationItem.title = "Default Survey Settings"
+        
+        configureSurveyNamesView()
     }
     
     func configure(sender: UIViewController, courseName: String) {
@@ -46,7 +52,8 @@ class DefaultSurveySettingsVC: UIViewController {
     @IBAction func deployDefaultSurveyButtonPressed(_ sender: Any) {
         if datesValid() {
             //do whatever
-            DatabaseRequester.deployDefaultSurvey(startDate: startDatePicker.date, endDate: endDatePicker.date, name: "testSurvey1", course: courseName, semester: "Fall 2018", professor: "gpburdell3")
+            let surveyName = surveyNameTextField.text ?? "SurveyName"
+            DatabaseRequester.deployDefaultSurvey(startDate: startDatePicker.date, endDate: endDatePicker.date, name: surveyName, course: courseName, semester: "Fall 2018", professor: "gpburdell3")
             self.navigationController?.popViewController(animated: true)
         } else {
             presentInvalidDatesAlert()
@@ -54,4 +61,16 @@ class DefaultSurveySettingsVC: UIViewController {
     }
     
 
+}
+
+//MARK: Survey Name View
+
+extension DefaultSurveySettingsVC {
+    
+    func configureSurveyNamesView() {
+        
+        surveyNameSeparatorView.backgroundColor = .lightGray
+        surveyNameSeparatorView.layer.cornerRadius = surveyNameSeparatorView.frame.height / 2
+        
+    }
 }

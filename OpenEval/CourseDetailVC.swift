@@ -12,26 +12,25 @@ class CourseDetailVC: UIViewController {
 
 
     var courseName: String!
+    var course: CourseResponse!
     var surveys: [Survey] = []
     
+    @IBOutlet weak var surveyTypeView: UIView!
     @IBOutlet weak var defaultSurveyButton: UIButton!
-    @IBOutlet weak var customSurveyButton: UIButton!
+    @IBOutlet weak var surveyTypeSeparatorView: UIView!
     
+// Created Surveys View
+    @IBOutlet weak var createdSurveysView: UIView!
     @IBOutlet weak var surveysCollectionView: UICollectionView!
+    @IBOutlet weak var createdSurveysSeparatorView: UIView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = courseName
-        
-        defaultSurveyButton.layer.cornerRadius = defaultSurveyButton.frame.height / 2
-        customSurveyButton.layer.cornerRadius = customSurveyButton.frame.height / 2
-        
-        
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        surveysCollectionView.setCollectionViewLayout(layout, animated: false)
-        surveysCollectionView.delegate = self
-        surveysCollectionView.dataSource = self
+    
+        configureSurveyTypeView()
+        configureCreateSuveysView()
         
     }
     
@@ -46,8 +45,9 @@ class CourseDetailVC: UIViewController {
         
     }
     
-    func configureSelf(sender: UIViewController, with courseTitle: String) {
-        courseName = courseTitle
+    func configureSelf(sender: UIViewController, with course: CourseResponse) {
+        self.course = course
+        courseName = course.courseNumber
         sender.navigationController?.pushViewController(self, animated: true)
         
     }
@@ -65,22 +65,50 @@ class CourseDetailVC: UIViewController {
 
 }
 
+//MARK: Survey Type View
+extension CourseDetailVC {
+    
+    func configureSurveyTypeView() {
+        
+        surveyTypeView.backgroundColor = .clear
+        defaultSurveyButton.layer.cornerRadius = 10
+        surveyTypeSeparatorView.backgroundColor = .lightGray
+        surveyTypeSeparatorView.layer.cornerRadius = surveyTypeSeparatorView.frame.height / 2
+        
+    }
+}
 
+//MARK: Created Surveys View
 extension CourseDetailVC: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+    
+    func configureCreateSuveysView() {
+        
+        createdSurveysView.backgroundColor = .clear
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        surveysCollectionView.setCollectionViewLayout(layout, animated: false)
+        surveysCollectionView.delegate = self
+        surveysCollectionView.dataSource = self
+        surveysCollectionView.backgroundColor = .clear
+        surveysCollectionView.register(SurveyCollectionViewCell.self, forCellWithReuseIdentifier: "surveys")
+        
+        createdSurveysSeparatorView.backgroundColor = .lightGray
+        createdSurveysSeparatorView.layer.cornerRadius = createdSurveysSeparatorView.frame.height / 2
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return surveys.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "basicCell", for: indexPath) as! BasicCollectionViewCell
-        cell.textLabel.text = surveys[indexPath.item].name
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "surveys", for: indexPath) as! SurveyCollectionViewCell
+        cell.layoutForCourseDetail(survey: surveys[indexPath.item])
         return cell
     }
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width / 2.5, height: collectionView.frame.height)
+        return CGSize(width: collectionView.frame.width / 2 - 10, height: collectionView.frame.height)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
@@ -90,6 +118,7 @@ extension CourseDetailVC: UICollectionViewDelegateFlowLayout, UICollectionViewDa
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 10
     }
+    
     
 }
 

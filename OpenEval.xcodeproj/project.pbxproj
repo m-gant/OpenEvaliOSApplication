@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		191841A1217A417300178A5A /* SurveyDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 191841A0217A417300178A5A /* SurveyDetailsView.xib */; };
+		191841A3217A44A300178A5A /* SurveyDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191841A2217A44A300178A5A /* SurveyDetailsView.swift */; };
+		191841A5217A45F100178A5A /* SurveyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191841A4217A45F100178A5A /* SurveyCollectionViewCell.swift */; };
+		192076962169743B00DFF7B7 /* NibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192076952169743B00DFF7B7 /* NibView.swift */; };
+		192076982169783C00DFF7B7 /* ScrollComponentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 192076972169783C00DFF7B7 /* ScrollComponentView.xib */; };
+		1920769A21697B0100DFF7B7 /* ScrollComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1920769921697B0100DFF7B7 /* ScrollComponentView.swift */; };
+		1920769C216982AD00DFF7B7 /* ProfessorCoursesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1920769B216982AD00DFF7B7 /* ProfessorCoursesView.xib */; };
+		1920769E2169B25E00DFF7B7 /* ProfessorCoursesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1920769D2169B25E00DFF7B7 /* ProfessorCoursesView.swift */; };
+		192076A02169BF7500DFF7B7 /* CourseCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1920769F2169BF7500DFF7B7 /* CourseCellView.xib */; };
+		192076A22169C00A00DFF7B7 /* CourseCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192076A12169C00A00DFF7B7 /* CourseCellView.swift */; };
+		192076A42169C1E500DFF7B7 /* ProfessorCourseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192076A32169C1E500DFF7B7 /* ProfessorCourseCollectionViewCell.swift */; };
+		192076A821705A0300DFF7B7 /* CollectionComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192076A721705A0300DFF7B7 /* CollectionComponentView.swift */; };
+		192076AA21705A1700DFF7B7 /* CollectionComponentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 192076A921705A1700DFF7B7 /* CollectionComponentView.xib */; };
 		1940D5592159638E00AFDD38 /* DefaultSurveySettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1940D5582159638E00AFDD38 /* DefaultSurveySettingsVC.swift */; };
 		194DE1ED215EB65C00EB3031 /* BasicCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194DE1EC215EB65C00EB3031 /* BasicCollectionViewCell.swift */; };
 		195CBCE1213DD09C002DC204 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195CBCE0213DD09C002DC204 /* AppDelegate.swift */; };
@@ -22,6 +35,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		191841A0217A417300178A5A /* SurveyDetailsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SurveyDetailsView.xib; sourceTree = "<group>"; };
+		191841A2217A44A300178A5A /* SurveyDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyDetailsView.swift; sourceTree = "<group>"; };
+		191841A4217A45F100178A5A /* SurveyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyCollectionViewCell.swift; sourceTree = "<group>"; };
+		192076952169743B00DFF7B7 /* NibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibView.swift; sourceTree = "<group>"; };
+		192076972169783C00DFF7B7 /* ScrollComponentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScrollComponentView.xib; sourceTree = "<group>"; };
+		1920769921697B0100DFF7B7 /* ScrollComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollComponentView.swift; sourceTree = "<group>"; };
+		1920769B216982AD00DFF7B7 /* ProfessorCoursesView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfessorCoursesView.xib; sourceTree = "<group>"; };
+		1920769D2169B25E00DFF7B7 /* ProfessorCoursesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfessorCoursesView.swift; sourceTree = "<group>"; };
+		1920769F2169BF7500DFF7B7 /* CourseCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CourseCellView.xib; sourceTree = "<group>"; };
+		192076A12169C00A00DFF7B7 /* CourseCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCellView.swift; sourceTree = "<group>"; };
+		192076A32169C1E500DFF7B7 /* ProfessorCourseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfessorCourseCollectionViewCell.swift; sourceTree = "<group>"; };
+		192076A721705A0300DFF7B7 /* CollectionComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionComponentView.swift; sourceTree = "<group>"; };
+		192076A921705A1700DFF7B7 /* CollectionComponentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionComponentView.xib; sourceTree = "<group>"; };
 		1940D5582159638E00AFDD38 /* DefaultSurveySettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSurveySettingsVC.swift; sourceTree = "<group>"; };
 		194DE1EC215EB65C00EB3031 /* BasicCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicCollectionViewCell.swift; sourceTree = "<group>"; };
 		195CBCDD213DD09C002DC204 /* OpenEval.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenEval.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,6 +107,19 @@
 				19D7FCDB21423398009E0A35 /* ResponseModels.swift */,
 				1940D5582159638E00AFDD38 /* DefaultSurveySettingsVC.swift */,
 				194DE1EC215EB65C00EB3031 /* BasicCollectionViewCell.swift */,
+				192076952169743B00DFF7B7 /* NibView.swift */,
+				192076972169783C00DFF7B7 /* ScrollComponentView.xib */,
+				1920769921697B0100DFF7B7 /* ScrollComponentView.swift */,
+				1920769B216982AD00DFF7B7 /* ProfessorCoursesView.xib */,
+				1920769D2169B25E00DFF7B7 /* ProfessorCoursesView.swift */,
+				1920769F2169BF7500DFF7B7 /* CourseCellView.xib */,
+				192076A12169C00A00DFF7B7 /* CourseCellView.swift */,
+				192076A32169C1E500DFF7B7 /* ProfessorCourseCollectionViewCell.swift */,
+				192076A721705A0300DFF7B7 /* CollectionComponentView.swift */,
+				192076A921705A1700DFF7B7 /* CollectionComponentView.xib */,
+				191841A0217A417300178A5A /* SurveyDetailsView.xib */,
+				191841A2217A44A300178A5A /* SurveyDetailsView.swift */,
+				191841A4217A45F100178A5A /* SurveyCollectionViewCell.swift */,
 			);
 			path = OpenEval;
 			sourceTree = "<group>";
@@ -143,9 +182,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				192076AA21705A1700DFF7B7 /* CollectionComponentView.xib in Resources */,
 				195CBCEB213DD09C002DC204 /* LaunchScreen.storyboard in Resources */,
+				1920769C216982AD00DFF7B7 /* ProfessorCoursesView.xib in Resources */,
+				192076982169783C00DFF7B7 /* ScrollComponentView.xib in Resources */,
 				195CBCE8213DD09C002DC204 /* Assets.xcassets in Resources */,
+				191841A1217A417300178A5A /* SurveyDetailsView.xib in Resources */,
 				195CBCE6213DD09C002DC204 /* Main.storyboard in Resources */,
+				192076A02169BF7500DFF7B7 /* CourseCellView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,14 +201,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				19D7FCD6213F6DAE009E0A35 /* CourseDetailVC.swift in Sources */,
+				191841A3217A44A300178A5A /* SurveyDetailsView.swift in Sources */,
 				195CBCE3213DD09C002DC204 /* ViewController.swift in Sources */,
 				19D7FCD8214226E1009E0A35 /* CourseSearchVC.swift in Sources */,
 				19D7FCDA2142335E009E0A35 /* DatabaseRequester.swift in Sources */,
+				192076962169743B00DFF7B7 /* NibView.swift in Sources */,
 				194DE1ED215EB65C00EB3031 /* BasicCollectionViewCell.swift in Sources */,
+				1920769A21697B0100DFF7B7 /* ScrollComponentView.swift in Sources */,
+				1920769E2169B25E00DFF7B7 /* ProfessorCoursesView.swift in Sources */,
+				191841A5217A45F100178A5A /* SurveyCollectionViewCell.swift in Sources */,
 				195CBCF3213DD0BC002DC204 /* ProfessorCoursesVC.swift in Sources */,
+				192076A42169C1E500DFF7B7 /* ProfessorCourseCollectionViewCell.swift in Sources */,
+				192076A821705A0300DFF7B7 /* CollectionComponentView.swift in Sources */,
 				1940D5592159638E00AFDD38 /* DefaultSurveySettingsVC.swift in Sources */,
 				195CBCE1213DD09C002DC204 /* AppDelegate.swift in Sources */,
 				19D7FCDC21423398009E0A35 /* ResponseModels.swift in Sources */,
+				192076A22169C00A00DFF7B7 /* CourseCellView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

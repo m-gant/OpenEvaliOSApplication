@@ -14,7 +14,7 @@ class CourseSearchVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var onDismiss: (() -> ())!
-    var onCellSelect: ((String) -> ())!
+    var onCellSelect: ((CourseResponse) -> ())!
     
     var searchResults: [CourseResponse] = []
     
@@ -28,7 +28,7 @@ class CourseSearchVC: UIViewController {
         tableView.dataSource = self
     }
     
-    func assignClosures(onDismiss: @escaping (() -> ()), onCellSelect: @escaping ((String) -> ())) {
+    func assignClosures(onDismiss: @escaping (() -> ()), onCellSelect: @escaping ((CourseResponse) -> ())) {
         self.onDismiss = onDismiss
         self.onCellSelect = onCellSelect
     }
@@ -73,7 +73,7 @@ extension CourseSearchVC: UITableViewDelegate, UITableViewDataSource {
         let selectedCourse = searchResults[indexPath.row]
         let alert = UIAlertController(title: "Are you sure?", message: "You are registering for \(selectedCourse.courseNumber)" , preferredStyle: .alert)
         let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
-            self.onCellSelect(selectedCourse.courseNumber)
+            self.onCellSelect(selectedCourse)
             self.onDismiss()
         }
         
