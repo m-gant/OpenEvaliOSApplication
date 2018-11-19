@@ -28,10 +28,13 @@
 		195CBCE8213DD09C002DC204 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 195CBCE7213DD09C002DC204 /* Assets.xcassets */; };
 		195CBCEB213DD09C002DC204 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 195CBCE9213DD09C002DC204 /* LaunchScreen.storyboard */; };
 		195CBCF3213DD0BC002DC204 /* ProfessorCoursesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195CBCF2213DD0BC002DC204 /* ProfessorCoursesVC.swift */; };
+		19D61B52218E884D00458031 /* UserTypeSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D61B51218E884D00458031 /* UserTypeSelectionViewController.swift */; };
+		19D61B54218E954300458031 /* StudentCourseSurveysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D61B53218E954300458031 /* StudentCourseSurveysViewController.swift */; };
 		19D7FCD6213F6DAE009E0A35 /* CourseDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D7FCD5213F6DAE009E0A35 /* CourseDetailVC.swift */; };
 		19D7FCD8214226E1009E0A35 /* CourseSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D7FCD7214226E1009E0A35 /* CourseSearchVC.swift */; };
 		19D7FCDA2142335E009E0A35 /* DatabaseRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D7FCD92142335E009E0A35 /* DatabaseRequester.swift */; };
 		19D7FCDC21423398009E0A35 /* ResponseModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D7FCDB21423398009E0A35 /* ResponseModels.swift */; };
+		19DDDB24219A8FB6005D6EB3 /* SurveyResponseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19DDDB23219A8FB6005D6EB3 /* SurveyResponseViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,10 +61,13 @@
 		195CBCEA213DD09C002DC204 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		195CBCEC213DD09C002DC204 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		195CBCF2213DD0BC002DC204 /* ProfessorCoursesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfessorCoursesVC.swift; sourceTree = "<group>"; };
+		19D61B51218E884D00458031 /* UserTypeSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTypeSelectionViewController.swift; sourceTree = "<group>"; };
+		19D61B53218E954300458031 /* StudentCourseSurveysViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentCourseSurveysViewController.swift; sourceTree = "<group>"; };
 		19D7FCD5213F6DAE009E0A35 /* CourseDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDetailVC.swift; sourceTree = "<group>"; };
 		19D7FCD7214226E1009E0A35 /* CourseSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseSearchVC.swift; sourceTree = "<group>"; };
 		19D7FCD92142335E009E0A35 /* DatabaseRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseRequester.swift; sourceTree = "<group>"; };
 		19D7FCDB21423398009E0A35 /* ResponseModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseModels.swift; sourceTree = "<group>"; };
+		19DDDB23219A8FB6005D6EB3 /* SurveyResponseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyResponseViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +126,9 @@
 				191841A0217A417300178A5A /* SurveyDetailsView.xib */,
 				191841A2217A44A300178A5A /* SurveyDetailsView.swift */,
 				191841A4217A45F100178A5A /* SurveyCollectionViewCell.swift */,
+				19D61B51218E884D00458031 /* UserTypeSelectionViewController.swift */,
+				19D61B53218E954300458031 /* StudentCourseSurveysViewController.swift */,
+				19DDDB23219A8FB6005D6EB3 /* SurveyResponseViewController.swift */,
 			);
 			path = OpenEval;
 			sourceTree = "<group>";
@@ -204,6 +213,8 @@
 				191841A3217A44A300178A5A /* SurveyDetailsView.swift in Sources */,
 				195CBCE3213DD09C002DC204 /* ViewController.swift in Sources */,
 				19D7FCD8214226E1009E0A35 /* CourseSearchVC.swift in Sources */,
+				19D61B52218E884D00458031 /* UserTypeSelectionViewController.swift in Sources */,
+				19DDDB24219A8FB6005D6EB3 /* SurveyResponseViewController.swift in Sources */,
 				19D7FCDA2142335E009E0A35 /* DatabaseRequester.swift in Sources */,
 				192076962169743B00DFF7B7 /* NibView.swift in Sources */,
 				194DE1ED215EB65C00EB3031 /* BasicCollectionViewCell.swift in Sources */,
@@ -217,6 +228,7 @@
 				195CBCE1213DD09C002DC204 /* AppDelegate.swift in Sources */,
 				19D7FCDC21423398009E0A35 /* ResponseModels.swift in Sources */,
 				192076A22169C00A00DFF7B7 /* CourseCellView.swift in Sources */,
+				19D61B54218E954300458031 /* StudentCourseSurveysViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

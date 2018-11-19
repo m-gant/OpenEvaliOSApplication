@@ -10,6 +10,7 @@ import UIKit
 
 class SurveyCollectionViewCell: UICollectionViewCell {
     
+    
     let surveyDetailsView = SurveyDetailsView().loadNib() as! SurveyDetailsView
     
     override init(frame: CGRect) {

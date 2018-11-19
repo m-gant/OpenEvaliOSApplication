@@ -10,7 +10,7 @@ import UIKit
 
 class CourseDetailVC: UIViewController {
 
-
+    var professorId: String!
     var courseName: String!
     var course: CourseResponse!
     var surveys: [Survey] = []
@@ -36,7 +36,7 @@ class CourseDetailVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
-        DatabaseRequester.getCourseSurveys(professor: "gpburdell3", course: courseName) { (surveys) in
+        DatabaseRequester.getCourseSurveys(professor: professorId, course: courseName) { (surveys) in
             self.surveys = surveys
             DispatchQueue.main.async {
                 self.surveysCollectionView.reloadData()
@@ -45,10 +45,11 @@ class CourseDetailVC: UIViewController {
         
     }
     
-    func configureSelf(sender: UIViewController, with course: CourseResponse) {
+    func configureSelf(sender: UIViewController, with course: CourseResponse, professorId: String) {
         self.course = course
         courseName = course.courseNumber
         sender.navigationController?.pushViewController(self, animated: true)
+        self.professorId = professorId
         
     }
     
@@ -58,7 +59,7 @@ class CourseDetailVC: UIViewController {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let defaultSurveySettingsVC = storyboard.instantiateViewController(withIdentifier: "defaultSurveySettingsVC") as? DefaultSurveySettingsVC {
-            defaultSurveySettingsVC.configure(sender: self, courseName: courseName)
+            defaultSurveySettingsVC.configure(sender: self, courseName: courseName, professorId: self.professorId)
         }
     }
     

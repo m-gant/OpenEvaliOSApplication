@@ -10,6 +10,7 @@ import UIKit
 
 class DefaultSurveySettingsVC: UIViewController {
     
+    var professorId: String!
     @IBOutlet weak var surveyNameView: UIView!
     @IBOutlet weak var surveyNameTextField: UITextField!
     @IBOutlet weak var surveyNameSeparatorView: UIView!
@@ -32,9 +33,10 @@ class DefaultSurveySettingsVC: UIViewController {
         configureSurveyNamesView()
     }
     
-    func configure(sender: UIViewController, courseName: String) {
+    func configure(sender: UIViewController, courseName: String, professorId: String) {
         self.courseName = courseName
         sender.navigationController?.pushViewController(self, animated: true)
+        self.professorId = professorId
         
     }
     
@@ -52,13 +54,15 @@ class DefaultSurveySettingsVC: UIViewController {
     @IBAction func deployDefaultSurveyButtonPressed(_ sender: Any) {
         if datesValid() {
             //do whatever
-            let surveyName = surveyNameTextField.text ?? "SurveyName"
-            DatabaseRequester.deployDefaultSurvey(startDate: startDatePicker.date, endDate: endDatePicker.date, name: surveyName, course: courseName, semester: "Fall 2018", professor: "gpburdell3")
+            let surveyName = surveyNameTextField.text != "" ? surveyNameTextField.text! : "DefaultSurvey"
+            let surveyNameString = surveyName.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? surveyName
+            DatabaseRequester.deployDefaultSurvey(startDate: startDatePicker.date, endDate: endDatePicker.date, name: surveyNameString, course: courseName, semester: "Fall 2018", professor: professorId)
             self.navigationController?.popViewController(animated: true)
         } else {
             presentInvalidDatesAlert()
         }
     }
+    
     
 
 }

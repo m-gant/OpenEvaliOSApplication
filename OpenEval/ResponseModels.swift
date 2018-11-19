@@ -17,8 +17,20 @@ struct CourseResponse: Codable {
 struct CourseResponseWrapper: Codable {
     var message: [CourseResponse]
 }
+
 struct SurveyResponseWrapper: Codable {
     var message: [Survey]
+}
+
+struct StudentCourseResponseWrapper : Codable {
+    var message: [StudentCourseResponse]
+}
+
+struct StudentCourseResponse: Codable {
+    var _id: String
+    var courseName: String
+    var courseNumber: String
+    var professor: String
 }
 
 struct Survey : Codable {
@@ -57,5 +69,21 @@ struct Survey : Codable {
         return formatter.string(from: endDate)
     }
     
+    
+}
+
+struct Question: Hashable {
+    
+    var type: String
+    var question: String
+    var options: [String] = []
+    
+    var hashValue: Int {
+        return question.hashValue
+    }
+    
+    static func == (lhs: Question, rhs: Question) -> Bool {
+        return (lhs.question == rhs.question && lhs.type == rhs.type && lhs.options == rhs.options)
+    }
     
 }

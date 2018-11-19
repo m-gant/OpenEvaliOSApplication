@@ -10,7 +10,7 @@ import UIKit
 
 class ProfessorCoursesVC: UIViewController {
     
-    
+    var professorId: String!
     var courses: [CourseResponse] = []
     @IBOutlet weak var scrollContentView: UIView!
     
@@ -27,9 +27,11 @@ class ProfessorCoursesVC: UIViewController {
         print(type(of: blurg).description().components(separatedBy: ".").last!)
         configureViews()
         
-        if let savedCoursesData = UserDefaults.standard.object(forKey: "Burdell") as? Data, let savedCourses = try? PropertyListDecoder().decode([CourseResponse].self, from: savedCoursesData) {
-            courses = savedCourses
-            coursesCollectionView.reloadData()
+        DatabaseRequester.getCourseFor(professorId: professorId) { (courseResponses) in
+            self.courses = courseResponses
+            DispatchQueue.main.async {
+                self.coursesCollectionView.reloadData()
+            }
         }
     }
     
@@ -57,16 +59,21 @@ class ProfessorCoursesVC: UIViewController {
                 courseSearchVC.view.removeFromSuperview()
                 courseSearchVC.removeFromParentViewController()
             }) { (courseResponse) in
-                self.courses.append(courseResponse)
                 
-                UserDefaults.standard.set(try? PropertyListEncoder().encode(self.courses), forKey: "Burdell")
-                DispatchQueue.main.async {
+                DatabaseRequester.professorRegisterFor(course: courseResponse, professorId: self.professorId, completion: {
+                    self.courses.append(courseResponse)
                     self.coursesCollectionView.reloadData()
-                }
+                })
+                
             }
             
         }
         
+    }
+    
+    func configureSelf(sender: UIViewController, professorId: String) {
+        sender.navigationController?.pushViewController(self, animated: true)
+        self.professorId = professorId
     }
     
     
@@ -119,7 +126,7 @@ extension ProfessorCoursesVC: UICollectionViewDataSource, UICollectionViewDelega
         let selectedCourse = courses[indexPath.item]
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let courseDetailVC = storyboard.instantiateViewController(withIdentifier: "courseDetail") as? CourseDetailVC {
-            courseDetailVC.configureSelf(sender: self, with: selectedCourse)
+            courseDetailVC.configureSelf(sender: self, with: selectedCourse, professorId: self.professorId)
         }
     }
     
