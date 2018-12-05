@@ -28,8 +28,8 @@ class DefaultSurveySettingsVC: UIViewController {
         deployDefaultSurveyButton.layer.cornerRadius = deployDefaultSurveyButton.frame.height / 2
         startDatePicker.minimumDate = Date()
         endDatePicker.minimumDate = Date()
-        self.navigationItem.title = "Default Survey Settings"
-        
+        self.navigationItem.title = "Survey Settings"
+        surveyNameTextField.delegate = self
         configureSurveyNamesView()
     }
     
@@ -69,12 +69,17 @@ class DefaultSurveySettingsVC: UIViewController {
 
 //MARK: Survey Name View
 
-extension DefaultSurveySettingsVC {
+extension DefaultSurveySettingsVC : UITextFieldDelegate{
     
     func configureSurveyNamesView() {
         
         surveyNameSeparatorView.backgroundColor = .lightGray
         surveyNameSeparatorView.layer.cornerRadius = surveyNameSeparatorView.frame.height / 2
         
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return false
     }
 }

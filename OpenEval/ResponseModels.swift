@@ -87,3 +87,15 @@ struct Question: Hashable {
     }
     
 }
+
+
+struct SurveyQuestionResponse : Hashable {
+    var question : String
+    var type : String
+    var mcResponsesCounts: [String: Int] = [:]
+    var freeResponses : [String] = []
+    
+    var hashValue: Int {
+        return question.hashValue
+    }
+}

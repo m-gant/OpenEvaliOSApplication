@@ -28,6 +28,7 @@
 		195CBCE8213DD09C002DC204 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 195CBCE7213DD09C002DC204 /* Assets.xcassets */; };
 		195CBCEB213DD09C002DC204 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 195CBCE9213DD09C002DC204 /* LaunchScreen.storyboard */; };
 		195CBCF3213DD0BC002DC204 /* ProfessorCoursesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195CBCF2213DD0BC002DC204 /* ProfessorCoursesVC.swift */; };
+		198BDAD221B5422D0028B5DA /* ViewSurveyResponsesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198BDAD121B5422D0028B5DA /* ViewSurveyResponsesViewController.swift */; };
 		19D61B52218E884D00458031 /* UserTypeSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D61B51218E884D00458031 /* UserTypeSelectionViewController.swift */; };
 		19D61B54218E954300458031 /* StudentCourseSurveysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D61B53218E954300458031 /* StudentCourseSurveysViewController.swift */; };
 		19D7FCD6213F6DAE009E0A35 /* CourseDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D7FCD5213F6DAE009E0A35 /* CourseDetailVC.swift */; };
@@ -61,6 +62,7 @@
 		195CBCEA213DD09C002DC204 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		195CBCEC213DD09C002DC204 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		195CBCF2213DD0BC002DC204 /* ProfessorCoursesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfessorCoursesVC.swift; sourceTree = "<group>"; };
+		198BDAD121B5422D0028B5DA /* ViewSurveyResponsesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSurveyResponsesViewController.swift; sourceTree = "<group>"; };
 		19D61B51218E884D00458031 /* UserTypeSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTypeSelectionViewController.swift; sourceTree = "<group>"; };
 		19D61B53218E954300458031 /* StudentCourseSurveysViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentCourseSurveysViewController.swift; sourceTree = "<group>"; };
 		19D7FCD5213F6DAE009E0A35 /* CourseDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDetailVC.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				19D61B51218E884D00458031 /* UserTypeSelectionViewController.swift */,
 				19D61B53218E954300458031 /* StudentCourseSurveysViewController.swift */,
 				19DDDB23219A8FB6005D6EB3 /* SurveyResponseViewController.swift */,
+				198BDAD121B5422D0028B5DA /* ViewSurveyResponsesViewController.swift */,
 			);
 			path = OpenEval;
 			sourceTree = "<group>";
@@ -217,6 +220,7 @@
 				19DDDB24219A8FB6005D6EB3 /* SurveyResponseViewController.swift in Sources */,
 				19D7FCDA2142335E009E0A35 /* DatabaseRequester.swift in Sources */,
 				192076962169743B00DFF7B7 /* NibView.swift in Sources */,
+				198BDAD221B5422D0028B5DA /* ViewSurveyResponsesViewController.swift in Sources */,
 				194DE1ED215EB65C00EB3031 /* BasicCollectionViewCell.swift in Sources */,
 				1920769A21697B0100DFF7B7 /* ScrollComponentView.swift in Sources */,
 				1920769E2169B25E00DFF7B7 /* ProfessorCoursesView.swift in Sources */,

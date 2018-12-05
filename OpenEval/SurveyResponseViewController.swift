@@ -49,6 +49,7 @@ class SurveyResponseViewController: UIViewController {
     func layoutScrollView() {
         
         let masterScrollView = UIScrollView()
+        masterScrollView.keyboardDismissMode = .interactive
         scrollContentView = UIView()
         self.view.addSubview(masterScrollView)
         masterScrollView.translatesAutoresizingMaskIntoConstraints = false

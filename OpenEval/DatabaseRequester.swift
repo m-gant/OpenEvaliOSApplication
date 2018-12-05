@@ -133,7 +133,7 @@ class DatabaseRequester {
         
     }
     
-    static func getCourseFor(professorId: String, callback: @escaping (([CourseResponse]) -> ())) {
+    static func getCoursesFor(professorId: String, callback: @escaping (([CourseResponse]) -> ())) {
         
         let url = URL(string: "https://openeval-server.herokuapp.com/registeredCourses/\(professorId)")!
         let request = URLRequest(url: url)
@@ -240,6 +240,83 @@ class DatabaseRequester {
             //print(response)
             
             completion()
+        }.resume()
+        
+    }
+    
+    static func validate(username: String, password: String, callback: @escaping ((Bool, Bool) -> ())) {
+        
+        let body = ["username": username, "password": password]
+        
+        let jsonData = try? JSONSerialization.data(withJSONObject: body, options: [])
+        
+        let url = URL(string: "https://openeval-server.herokuapp.com/authenticate/login")!
+        
+        var request = URLRequest(url: url)
+        
+        request.httpMethod = "POST"
+        request.httpBody = jsonData
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            
+            guard let data = data else {
+                print(error, error?.localizedDescription)
+                callback(false, false)
+                return
+            }
+            
+            guard let jsonObject = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) else {
+                callback(false, false)
+                return
+            }
+            
+            guard let response = jsonObject as? [String: String], let token = response["token"], let userType = response["user_type"] else {
+                callback(false, false)
+                return
+            }
+            
+            if userType == "professor" {
+                callback(true, true)
+            } else {
+                callback(true, false)
+            }
+            print(token)
+            
+            
+            
+        }.resume()
+    }
+    
+    static func getResponseTo(survey surveyId: String, callback: @escaping (([SurveyQuestionResponse])->())) {
+        
+        let url = URL(string: "https://openeval-server.herokuapp.com/responses/default/\(surveyId)")!
+        let request = URLRequest(url: url)
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            guard let data = data else { print(error, error?.localizedDescription); return }
+            
+            guard let jsonObject = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) else { print("couldn't convert data to JSON"); return }
+            
+            var surveyQuestionResponses: [SurveyQuestionResponse] = []
+            if let fullResponse = jsonObject as? [String: Any], let responses = fullResponse["responses"] as? [String: Any] {
+                
+                for question in responses.keys {
+                
+                    if let mcResponseCount = responses[question] as? [String: Int] {
+                        let surveyQuestionResponse = SurveyQuestionResponse(question: question, type: "mc", mcResponsesCounts: mcResponseCount, freeResponses: [])
+                        surveyQuestionResponses.append(surveyQuestionResponse)
+                    } else if let freeResponses = responses[question] as? [String] {
+                        let surveyQuestionResponse = SurveyQuestionResponse(question: question, type: "free", mcResponsesCounts: [:], freeResponses: freeResponses)
+                        surveyQuestionResponses.append(surveyQuestionResponse)
+                    }
+                }
+                callback(surveyQuestionResponses)
+                
+            } else {
+                callback([])
+            }
+            
         }.resume()
         
     }

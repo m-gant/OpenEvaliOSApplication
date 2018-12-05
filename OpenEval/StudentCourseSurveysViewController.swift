@@ -18,6 +18,14 @@ class StudentCourseSurveysViewController: UIViewController {
     var courseViews : [String : UIView] = [:]
     var courseSurveys : [String: [Survey]] = [:]
     let COURSEVIEWHEIGHT : CGFloat = 225
+    var totalCourses = 0
+    var courseSurveysLoaded = 0 {
+        didSet {
+            if (courseSurveysLoaded != 0 && courseSurveysLoaded == totalCourses) {
+                layoutCourseViews()
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +33,7 @@ class StudentCourseSurveysViewController: UIViewController {
         self.navigationItem.title = "Course Surveys"
         // Do any additional setup after loading the view.
         layoutScrollView()
-        layoutCourseViews()
+        retrieveData()
         
     }
     
@@ -55,60 +63,58 @@ class StudentCourseSurveysViewController: UIViewController {
         
     }
     
-    func retrieveData(completion: @escaping (() -> ())) {
+    func retrieveData() {
         DatabaseRequester.getCoursesFor(studentId: studentId) { (courseResponses) in
+            self.totalCourses = courseResponses.count
             for courseResponse in courseResponses {
                 self.courseNumbers.append(courseResponse.courseNumber)
                 self.courseProfessors[courseResponse.courseNumber] = courseResponse.professor
                 DatabaseRequester.getCourseSurveys(professor: courseResponse.professor, course: courseResponse.courseNumber, callback: { (surveys) in
                     self.courseSurveys[courseResponse.courseNumber] = surveys
-                    completion()
+                    self.courseSurveysLoaded += 1
                 })
             }
-            
-            
             
         }
     }
     
     func layoutCourseViews() {
         
-        retrieveData {
+        
+        DispatchQueue.main.async {
             
-            DispatchQueue.main.async {
+            self.scrollContentView.heightAnchor.constraint(equalToConstant: CGFloat(self.courseNumbers.count) * self.COURSEVIEWHEIGHT)
+            for index in 0..<self.courseNumbers.count {
+                let course = self.courseNumbers[index]
+                let courseView = self.createCourseSurveysView(courseName: course)
+                self.courseViews[course] = courseView
                 
-                self.scrollContentView.heightAnchor.constraint(equalToConstant: CGFloat(self.courseNumbers.count) * self.COURSEVIEWHEIGHT)
-                for index in 0..<self.courseNumbers.count {
-                    let course = self.courseNumbers[index]
-                    let courseView = self.createCourseSurveysView(courseName: course)
-                    self.courseViews[course] = courseView
+                
+                self.scrollContentView.addSubview(courseView)
+                courseView.translatesAutoresizingMaskIntoConstraints = false
+                self.scrollContentView.addConstraints([
+                    courseView.leadingAnchor.constraint(equalTo: self.scrollContentView.leadingAnchor),
+                    courseView.trailingAnchor.constraint(equalTo: self.scrollContentView.trailingAnchor),
+                    courseView.heightAnchor.constraint(equalToConstant: self.COURSEVIEWHEIGHT)
+                    ])
+                
+                
+                if index != 0 {
+                    let prevCourse = self.courseNumbers[index - 1]
+                    let prevCourseView = self.courseViews[prevCourse] ?? UIView()
+                    courseView.topAnchor.constraint(equalTo: prevCourseView.bottomAnchor).isActive = true
                     
-                    
-                    self.scrollContentView.addSubview(courseView)
-                    courseView.translatesAutoresizingMaskIntoConstraints = false
-                    self.scrollContentView.addConstraints([
-                        courseView.leadingAnchor.constraint(equalTo: self.scrollContentView.leadingAnchor),
-                        courseView.trailingAnchor.constraint(equalTo: self.scrollContentView.trailingAnchor),
-                        courseView.heightAnchor.constraint(equalToConstant: self.COURSEVIEWHEIGHT)
-                        ])
-                    
-                    
-                    if index != 0 {
-                        let prevCourse = self.courseNumbers[index - 1]
-                        let prevCourseView = self.courseViews[prevCourse] ?? UIView()
-                        courseView.topAnchor.constraint(equalTo: prevCourseView.bottomAnchor).isActive = true
-                        
-                    } else {
-                        courseView.topAnchor.constraint(equalTo: self.scrollContentView.topAnchor).isActive = true
-                    }
-                    
-                    
-                    
-                    
+                } else {
+                    courseView.topAnchor.constraint(equalTo: self.scrollContentView.topAnchor).isActive = true
                 }
                 
+                
+                
+                
             }
+            
         }
+        
         
         
     }
